@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 public class Main {
     MongoCollection<Document> collection;
-    public void dbConnection(){
+    public String dbConnection(){
         String connectionString = "mongodb+srv://ody:Ody12345@cluster0.guk08bz.mongodb.net/?retryWrites=true&w=majority";
         ServerApi serverApi = ServerApi.builder()
                 .version(ServerApiVersion.V1)
@@ -31,12 +31,7 @@ public class Main {
         try (MongoClient mongoClient = MongoClients.create(settings)) {
             MongoDatabase database = mongoClient.getDatabase("blog");
             collection = database.getCollection("posts");
-//            dbInsert();
-//            createIndexes();
-//            dbFind();
-//            dbUpdate();
-//            dbDelete();
-//            dbAggregate();
+            return "connected";
         }
     }
     private void dbInsert(){
